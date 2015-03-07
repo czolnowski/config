@@ -1,0 +1,10 @@
+{
+    "name": "mindweb/config",
+    "authors": [
+        {
+            "name": "Marcin Czołnowski",
+            "email": "marcin@czolnowski.net"
+        }
+    ],
+    "require": {}
+}
