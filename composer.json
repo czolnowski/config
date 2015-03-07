@@ -1,5 +1,8 @@
 {
     "name": "mindweb/config",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Marcin Czołnowski",
