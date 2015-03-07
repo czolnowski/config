@@ -9,5 +9,8 @@
             "email": "marcin@czolnowski.net"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-0": { "Mindweb\\Config\\": "" }
+    }
 }
