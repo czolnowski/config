@@ -11,6 +11,8 @@
     ],
     "require": {},
     "autoload": {
-        "psr-0": { "Mindweb\\Config\\": "" }
+        "psr-0": {
+            "Mindweb\\Config\\": "src"
+        }
     }
 }
