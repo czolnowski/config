@@ -56,5 +56,10 @@ abstract class Configuration
         return $this->initialized;
     }
 
+    final protected function setAsInitialized()
+    {
+        $this->initialized = true;
+    }
+
     abstract protected function init();
 }
