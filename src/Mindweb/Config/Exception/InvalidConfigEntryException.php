@@ -6,11 +6,11 @@ use RuntimeException;
 
 class InvalidConfigEntryException extends RuntimeException
 {
-    public function __construct($key, $configurationFilePath)
+    public function __construct($key)
     {
         parent::__construct(sprintf(
-            'Invalid config entry: %s. Please add this to configuration path. [%s]',
-            $key, $configurationFilePath
+            'Invalid config entry: %s. Please add this to configuration file.',
+            $key
         ));
     }
 } 

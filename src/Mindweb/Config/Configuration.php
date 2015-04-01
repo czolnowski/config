@@ -1,7 +1,9 @@
 <?php
 namespace Mindweb\Config;
 
-abstract class Configuration
+use Symfony\Component\Config\Loader\LoaderInterface;
+
+class Configuration
 {
     /**
      * @var array
@@ -9,21 +11,28 @@ abstract class Configuration
     protected $entries;
 
     /**
-     * @var string
-     */
-    protected $path;
-
-    /**
      * @var bool
      */
     private $initialized = false;
 
     /**
-     * @param string $path
+     * @var LoaderInterface
      */
-    public function __construct($path)
+    private $loaderInterface;
+
+    /**
+     * @var array
+     */
+    private $resources;
+
+    /**
+     * @param LoaderInterface $loaderInterface
+     * @param array $resources
+     */
+    public function __construct(LoaderInterface $loaderInterface, array $resources)
     {
-        $this->path = $path;
+        $this->loaderInterface = $loaderInterface;
+        $this->resources = $resources;
     }
 
     /**
@@ -39,7 +48,7 @@ abstract class Configuration
 
         while ($index = array_shift($keyPath)) {
             if (!isset($entries[$index])) {
-                throw new Exception\InvalidConfigEntryException($key, $this->path);
+                throw new Exception\InvalidConfigEntryException($key);
             }
 
             $entries = &$entries[$index];
@@ -49,17 +58,15 @@ abstract class Configuration
     }
 
     /**
-     * @return bool
+     * Initialize configuration.
      */
-    final protected function isInitialized()
+    protected function init()
     {
-        return $this->initialized;
-    }
+        if ($this->initialized) {
+            return;
+        }
 
-    final protected function setAsInitialized()
-    {
+        $this->entries = $this->loaderInterface->load($this->resources);
         $this->initialized = true;
     }
-
-    abstract protected function init();
 }

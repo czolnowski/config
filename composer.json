@@ -9,7 +9,9 @@
             "email": "marcin@czolnowski.net"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/config": "~2.0"
+    },
     "autoload": {
         "psr-0": {
             "Mindweb\\Config\\": "src"
